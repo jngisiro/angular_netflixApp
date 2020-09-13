@@ -82,8 +82,8 @@ jobs:
       - run:
           name: Build Angular project
           command: |
-            npm install
-            npm install -g @angular/cli
+            sudo npm install
+            sudo npm install -g @angular/cli
             ng build --prod
             cd dist/netflix
             zip ../dist/netflix.zip -r * .[^.]*
