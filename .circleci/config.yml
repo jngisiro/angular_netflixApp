@@ -44,7 +44,7 @@ jobs:
             npm install
             npm run build
             cd dist/netflix
-            zip ../dist/netflix.zip -r * .[^.]*
+            zip ../dist.zip -r * .[^.]*
             echo "Build Successful"
 
       - run:
