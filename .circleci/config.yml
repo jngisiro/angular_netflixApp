@@ -65,8 +65,8 @@ jobs:
       - *show-current-branch-name
       - *restore-cache
       - run:
-        name: "Lint Typescripe Code"
-        command: npm run lint
+          name: "Lint Typescripe Code"
+          command: npm run lint
 
   deploy-to-aws-s3:
     executor: app-executor
