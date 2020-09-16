@@ -68,6 +68,18 @@ jobs:
           name: "Lint Typescripe Code"
           command: npm run lint
 
+  prettier:
+    executor: app-executor
+    steps:
+      - checkout
+      - *show-current-branch-name
+      - *restore-cache
+      - run:
+          name: Run Prettier Check
+          command: /
+            npm install prettier
+            npm run prettier:check
+
   deploy-to-aws-s3:
     executor: app-executor
     steps:
@@ -119,6 +131,17 @@ workflows:
   build_and_deloy:
     jobs:
       - build
+
+      - prettier:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - develop
+                - staging
+                - master
+
       - lint-typescript:
           requires:
             - build
@@ -128,15 +151,18 @@ workflows:
                 - develop
                 - staging
                 - master
+
       - deploy-to-aws-s3:
           requires:
             - lint-typescript
+            - prettier
           filters:
             branches:
               only:
                 - develop
                 - staging
                 - master
+
       - deploy-to-cloudfront:
           requires:
             - deploy-to-aws-s3
