@@ -12,7 +12,7 @@ aliases:
       name: Show current branch
       command: echo ${CIRCLE_BRANCH}
 
-  - &restore-cache:
+  - &restore-cache
     restore_cache:
       keys:
         - app-{{ checksum "package.json" }}
@@ -23,7 +23,7 @@ aliases:
       name: Install dependencies
       command: npm install
 
-  - &save-cache:
+  - &save-cache
     save_cache:
       paths:
         - node_modules
@@ -48,7 +48,6 @@ aliases:
         sudo apt-get install -y awscli
         sudo apt-get install -y python-pip python-dev build-essential
 
-
 jobs:
   build:
     executor: app-executor
@@ -66,20 +65,20 @@ jobs:
       - *show-current-branch-name
       - *restore-cache
       - run:
-          name: "Lint Typescripe Code"
+          name: 'Lint Typescripe Code'
           command: npm run lint
 
   prettier:
     executor: app-executor
     steps:
-        - checkout
-        - *show-current-branch-name
-        - *restore-cache
-        - run:
-            name: Run Prettier Check
-            command: /
-              npm install prettier
-              npm run prettier:check
+      - checkout
+      - *show-current-branch-name
+      - *restore-cache
+      - run:
+          name: Run Prettier Check
+          command: /
+            npm install prettier
+            npm run prettier:check
 
   deploy-to-aws-s3:
     executor: app-executor
@@ -90,7 +89,7 @@ jobs:
       - *build-angular-project
 
       - run:
-          name: "Deploy to AWS S3"
+          name: 'Deploy to AWS S3'
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]
             then
@@ -113,7 +112,7 @@ jobs:
       - *build-angular-project
 
       - run:
-          name: "Deploy to AWS CloudFront"
+          name: 'Deploy to AWS CloudFront'
           command: |
             aws configure set preview.cloudfront true
             if [ "${CIRCLE_BRANCH}" == "master" ]
@@ -144,7 +143,7 @@ workflows:
                 - master
 
       - lint-typescript:
-          requires: 
+          requires:
             - build
           filters:
             branches:
@@ -163,7 +162,7 @@ workflows:
                 - develop
                 - staging
                 - master
-                
+
       - deploy-to-cloudfront:
           requires:
             - deploy-to-aws-s3
