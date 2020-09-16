@@ -130,7 +130,7 @@ workflows:
                 - master
       - deploy-to-aws-s3:
           requires:
-            - linting
+            - lint-typescript
           filters:
             branches:
               only:
