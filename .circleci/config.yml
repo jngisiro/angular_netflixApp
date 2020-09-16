@@ -120,7 +120,7 @@ workflows:
   build_and_deloy:
     jobs:
       - build
-      - lint-typescript
+      - lint-typescript:
           requires: 
             - build
           filters:
