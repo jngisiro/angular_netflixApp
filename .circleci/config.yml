@@ -77,7 +77,6 @@ jobs:
       - run:
           name: Run Prettier Check
           command: |
-            npm install prettier
             npm run prettier:check
 
   deploy-to-aws-s3:
