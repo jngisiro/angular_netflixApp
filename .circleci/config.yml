@@ -12,7 +12,7 @@ aliases:
       name: Show current branch
       command: echo ${CIRCLE_BRANCH}
 
-  - &restore-cache:
+  - &restore-cache
     restore_cache:
       keys:
         - app-{{ checksum "package.json" }}
@@ -47,7 +47,6 @@ aliases:
         sudo apt-get -y -qq update
         sudo apt-get install -y awscli
         sudo apt-get install -y python-pip python-dev build-essential
-
 
 jobs:
   build:
@@ -121,7 +120,7 @@ workflows:
     jobs:
       - build
       - lint-typescript:
-          requires: 
+          requires:
             - build
           filters:
             branches:
