@@ -76,7 +76,7 @@ jobs:
       - *restore-cache
       - run:
           name: Run Prettier Check
-          command: /
+          command: |
             npm install prettier
             npm run prettier:check
 
