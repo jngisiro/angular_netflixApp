@@ -58,6 +58,16 @@ jobs:
       - *install-dependencies
       - *save-cache
 
+  lint-typescript:
+    executor: app-executor
+    steps:
+      - checkout
+      - *show-current-branch-name
+      - *restore-cache
+      - run:
+          name: "Lint Typescripe Code"
+          command: npm run lint
+
   deploy-to-aws-s3:
     executor: app-executor
     steps:
@@ -109,9 +119,18 @@ workflows:
   build_and_deloy:
     jobs:
       - build
-      - deploy-to-aws-s3:
+      - lint-typescript:
           requires:
             - build
+          filters:
+            branches:
+              only:
+                - develop
+                - staging
+                - master
+      - deploy-to-aws-s3:
+          requires:
+            - lint-typescript
           filters:
             branches:
               only:
