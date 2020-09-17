@@ -1,0 +1,15 @@
+<span class="pageCount">{{ currentPage }} - {{ totalPages }}</span>
+<button
+  class="paginate-button"
+  [ngClass]="{ disable: currentPage === 1 }"
+  (click)="onPaginate.emit('prev')"
+>
+  Previous
+</button>
+<button
+  class="paginate-button"
+  [ngClass]="{ disable: currentPage === totalPages }"
+  (click)="onPaginate.emit('next')"
+>
+  Next
+</button>

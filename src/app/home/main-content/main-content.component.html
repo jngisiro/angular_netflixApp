@@ -3,7 +3,13 @@
 
   <div class="grid-movie-title">
     <div class="movieType">Now Playing</div>
-    <div class="paginate">Paginator</div>
+    <div class="paginate">
+      <app-paginate
+        [currentPage]="currentPage"
+        (onPaginate)="paginate($event)"
+        [totalPages]="15"
+      ></app-paginate>
+    </div>
   </div>
 
   <!-- Display grid component -->
