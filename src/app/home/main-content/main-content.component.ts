@@ -33,7 +33,17 @@ export class MainContentComponent implements OnInit {
     },
   ];
 
+  currentPage = 1;
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  paginate(direction: string) {
+    if (direction === 'prev' && this.currentPage >= 1) {
+      --this.currentPage;
+    } else {
+      ++this.currentPage;
+    }
+  }
 }
