@@ -1,0 +1,32 @@
+<div class="slider">
+  <div class="slider-slides">
+    <div
+      class="slider-image"
+      [ngStyle]="{
+        'background-image': 'url(' + images[currentIndex].url + ')'
+      }"
+    ></div>
+  </div>
+
+  <div *ngIf="auto" class="slider-arrows">
+    <div
+      class="slider-arrow slider-arrow--left"
+      (click)="moveSlide('prev')"
+    ></div>
+    <div
+      class="slider-arrow slider-arrow--right"
+      (click)="moveSlide('next')"
+    ></div>
+  </div>
+
+  <div class="slider-nav">
+    <button
+      *ngFor="let image of images; let i = index"
+      [class]="
+        currentIndex === i
+          ? 'slider-navButton slider-navButton--active'
+          : 'slider-navButton'
+      "
+    ></button>
+  </div>
+</div>
