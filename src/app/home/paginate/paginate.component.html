@@ -2,14 +2,14 @@
 <button
   class="paginate-button"
   [ngClass]="{ disable: currentPage === 1 }"
-  (click)="onPaginate.emit('prev')"
+  (click)="paginate.emit('prev')"
 >
   Previous
 </button>
 <button
   class="paginate-button"
   [ngClass]="{ disable: currentPage === totalPages }"
-  (click)="onPaginate.emit('next')"
+  (click)="paginate.emit('next')"
 >
   Next
 </button>

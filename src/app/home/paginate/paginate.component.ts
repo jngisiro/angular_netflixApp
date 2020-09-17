@@ -9,7 +9,7 @@ export class PaginateComponent implements OnInit {
   @Input() currentPage: number;
   @Input() totalPages: number;
 
-  @Output() onPaginate = new EventEmitter();
+  @Output() paginate = new EventEmitter();
 
   constructor() {}
 
