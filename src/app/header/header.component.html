@@ -1,0 +1,50 @@
+<div class="header-nav-wrapper">
+  <div class="header-bar"></div>
+  <div class="header-navbar">
+    <div class="header-image">
+      <img src="assets/images/logo.svg" alt="logo" />
+    </div>
+
+    <div
+      [class]="getToggleClass()"
+      id="header-mobile-menu"
+      (click)="toggleMenu = !toggleMenu; toggleNav = !toggleNav"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <ul [class]="getNavClass()">
+      <li class="header-nav-item">
+        <a routerLink="now-playing" class="header-list-name"
+          ><i class="fa fa-film"></i> Now Playing</a
+        >
+      </li>
+
+      <li class="header-nav-item">
+        <a routerLink="popular" class="header-list-name">
+          <i class="fa fa-fire"></i> Popular</a
+        >
+      </li>
+
+      <li class="header-nav-item">
+        <a routerLink="top-rated" class="header-list-name"
+          ><i class="fa fa-star"></i> Top Rated</a
+        >
+      </li>
+
+      <li class="header-nav-item">
+        <a routerLink="upcoming" class="header-list-name"
+          ><i class="fa fa-plus-square"></i> Upcoming</a
+        >
+      </li>
+
+      <input
+        class="search-input"
+        type="text"
+        placeholder="Search for a movie"
+      />
+    </ul>
+  </div>
+</div>
