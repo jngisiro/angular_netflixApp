@@ -8,7 +8,12 @@ import { SlideshowComponent } from './slideshow/slideshow.component';
 import { PaginateComponent } from './paginate/paginate.component';
 
 @NgModule({
-  declarations: [HomeComponent, MainContentComponent, SlideshowComponent, PaginateComponent],
+  declarations: [
+    HomeComponent,
+    MainContentComponent,
+    SlideshowComponent,
+    PaginateComponent,
+  ],
   imports: [CommonModule, HomeRoutingModule],
   exports: [HomeComponent],
 })
