@@ -1,0 +1,20 @@
+<div class="grid">
+  <div
+    class="grid-cell"
+    *ngFor="let image of images"
+    [style]="'background-image: url(' + image.url + ')'"
+  >
+    <div class="grid-read-more">
+      <button class="grid-cell-button">Read More</button>
+    </div>
+
+    <div class="grid-detail">
+      <span class="grid-detail-title">Mission Impossible</span>
+
+      <div class="grid-detail-rating">
+        <app-rating [rating]="image.rating"></app-rating>
+        <div class="grid-vote-average">{{ image.rating | number: "1.1" }}</div>
+      </div>
+    </div>
+  </div>
+</div>
