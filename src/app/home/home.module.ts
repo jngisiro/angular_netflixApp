@@ -6,6 +6,8 @@ import { HomeComponent } from './home.component';
 import { MainContentComponent } from './main-content/main-content.component';
 import { SlideshowComponent } from './slideshow/slideshow.component';
 import { PaginateComponent } from './paginate/paginate.component';
+import { GridComponent } from './grid/grid.component';
+import { RatingComponent } from './rating/rating.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +15,8 @@ import { PaginateComponent } from './paginate/paginate.component';
     MainContentComponent,
     SlideshowComponent,
     PaginateComponent,
+    GridComponent,
+    RatingComponent,
   ],
   imports: [CommonModule, HomeRoutingModule],
   exports: [HomeComponent],
